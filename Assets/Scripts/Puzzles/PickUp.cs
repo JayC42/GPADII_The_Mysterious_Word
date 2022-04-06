@@ -6,10 +6,14 @@ public class PickUp : MonoBehaviour
 {
     [SerializeField] private Transform container;
     private Rigidbody rb;
+    Outline outline;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        outline = GetComponent<Outline>();
+        outline.OutlineMode = Outline.Mode.OutlineHidden;
+        
     }
 
     public void OnMouseDown()
@@ -26,4 +30,13 @@ public class PickUp : MonoBehaviour
         rb.useGravity = true;
     }
 
+    public void OnMouseEnter()
+    {
+        outline.OutlineMode = Outline.Mode.OutlineVisible;
+    }
+
+    public void OnMouseExit() 
+    {
+        outline.OutlineMode = Outline.Mode.OutlineHidden;
+    }
 }

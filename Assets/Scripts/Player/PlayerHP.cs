@@ -9,6 +9,7 @@ public class PlayerHP : MonoBehaviour
     public Slider slider;
     public TMP_Text hpText; 
     private int damage = 5;
+    public static bool hurt = false;
 
     void Start()
     {
@@ -18,6 +19,14 @@ public class PlayerHP : MonoBehaviour
     {
         slider.value = health;
         hpText.text = "Health : " + health; 
+
+        if(DetectBall.wrongDmg == true)
+        {
+            Debug.Log("Wrong");
+            health = health - damage;
+            DetectBall.wrongDmg = false;
+            hurt = true;
+        }
     }
 
 
@@ -25,7 +34,8 @@ public class PlayerHP : MonoBehaviour
     {
         if(other.gameObject.tag == "Hazard")
         {
-            health = health - damage; 
+            health = health - damage;
+            hurt = true;
         }
     }
 

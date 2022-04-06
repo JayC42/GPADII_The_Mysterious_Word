@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     public CharacterController controller;
     public Transform player; 
     bool isGrounded = false;
+    public static bool jumpSound = false;
     //public LayerMask groundMask;
     //public Transform groundCheck;
     //public float groundDistance = 0.4f;
@@ -21,6 +22,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         groundDist = GetComponent<Collider>().bounds.extents.y; 
     }
 
@@ -66,6 +68,7 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            jumpSound = true;
         }
     }
 
