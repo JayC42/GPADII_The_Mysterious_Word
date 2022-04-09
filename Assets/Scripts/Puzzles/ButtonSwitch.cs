@@ -6,18 +6,15 @@ using UnityEngine.Events;
 
 public class ButtonSwitch : MonoBehaviour
 {
-    public GameObject userTxt; 
+    // Tick in inspector if u want this button to be the correct one
+    [Header("Button Bool Option")]
+    public bool correctBtn;
+    public GameObject ToolTip1; 
     public GameObject pressSwitch; 
-    public GameObject keyPrefab; 
+    public GameObject key; 
     public Transform keySpawnLoc; 
-    public UnityEvent OnPress;
-    //public UnityEvent OnRelease;
     public static bool wrongBtn = false;
     private bool inRange; 
-
-    // Tick in inspector if u want this button to be the correct one
-    [SerializeField] private bool correctBtn;
-    //GameObject presser;
     public AudioSource source;
     public AudioClip[] sfx;
     
@@ -26,33 +23,29 @@ public class ButtonSwitch : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         inRange = false; 
-        userTxt.SetActive(false); 
+        ToolTip1.SetActive(false); 
+        key.SetActive(false); 
+
     }
 
     void Update()
     {
-        // if (inRange && Input.GetMouseButtonDown(0))
-        // {
-        //     StartCoroutine(SpawnKey()); 
-        // }
+        if (inRange && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Mouse click");
+            StartButtonPress();
+        }
         
     }
   
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("is Range");
+        //Debug.Log("is Range");
 
         if (other.gameObject.CompareTag("Player"))
         {
-            userTxt.SetActive(true); 
             inRange = true;
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                StartButtonPress();
-                //OnPress.Invoke();
-            }
-            
+            ToolTip1.SetActive(true); 
         }
     }
     void OnTriggerExit(Collider other)
@@ -60,7 +53,7 @@ public class ButtonSwitch : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             inRange = false;
-            userTxt.SetActive(false); 
+            ToolTip1.SetActive(false); 
         }
     }
     public void StartButtonPress()
@@ -77,8 +70,9 @@ public class ButtonSwitch : MonoBehaviour
     }
     IEnumerator ButtonPress()
     {
-        pressSwitch.transform.localPosition = new Vector3(0, -0.94f, 0); 
-        yield return new WaitForSeconds(3f); 
+        source.PlayOneShot(sfx[0]);
+        pressSwitch.transform.localPosition = new Vector3(0, 0.7f, 0); 
+        yield return new WaitForSeconds(2f); 
         pressSwitch.transform.localPosition = new Vector3(0, 1.5f, 0); 
 
         if (correctBtn == true)
@@ -92,18 +86,18 @@ public class ButtonSwitch : MonoBehaviour
     }
     IEnumerator SpawnKey()
     {
-        yield return new WaitForSeconds(3f); 
-        //source.clip = sfx[];
-        source.PlayOneShot(sfx[0]); 
+        source.PlayOneShot(sfx[4]); 
+        yield return new WaitForSeconds(2f); 
         source.PlayOneShot(sfx[1]); 
-        GameObject key = Instantiate(keyPrefab) as GameObject; 
-        key.transform.position = keySpawnLoc.position; 
+
+        // Key appears 
+        key.SetActive(true); 
     }
 
     IEnumerator SendDamage()
     {
-        yield return new WaitForSeconds(3f); 
         source.PlayOneShot(sfx[2]); 
+        yield return new WaitForSeconds(1f); 
         source.PlayOneShot(sfx[3]); 
         wrongBtn = true;
     }

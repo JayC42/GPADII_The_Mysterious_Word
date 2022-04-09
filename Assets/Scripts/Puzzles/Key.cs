@@ -6,23 +6,60 @@ using UnityEngine.UI;
 
 public class Key : MonoBehaviour
 {
-    bool keySpawned;
+    public AudioSource source;
+    public GameObject toolTip2;
+    public GameObject keyHolder;
+    public static bool obtainedKey;
+    public static bool usedKey;
+    private bool inRange;
+
     void Start()
     {
-        keySpawned = true; 
+        inRange = false; 
+        obtainedKey = false;
+        usedKey = false;
+        toolTip2.SetActive(false); 
+        keyHolder.SetActive(false); 
     }
 
- 
+
     void Update()
     {
-        if (keySpawned)
+        // Rotate key
+        gameObject.transform.Rotate(-90f * Time.deltaTime, 0, 0);
+
+        // Play some particle fx
+
+        // Picked up key 
+        if (inRange && Input.GetKeyDown(KeyCode.F))
         {
-            gameObject.transform.Rotate(0, 0, -90f); 
+            Debug.Log("Key in range!");
+            obtainedKey = true; 
+            this.gameObject.SetActive(false); 
+            toolTip2.SetActive(false); 
         }
-        // Picked up key & reflect on UI holder 
-        if(Input.GetMouseButtonDown(0))
+
+        if (obtainedKey)
         {
-            Destroy(gameObject); 
+            // show key icon on player UI 
+            keyHolder.SetActive(true); 
+        }
+
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            inRange = true;
+            toolTip2.SetActive(true);
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            inRange = false;
+            toolTip2.SetActive(false);
         }
     }
 }
