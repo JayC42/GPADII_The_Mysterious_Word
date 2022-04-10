@@ -12,11 +12,13 @@ public class PlayerHP : MonoBehaviour
     private int wrongOrb_damage = 15;
     private int wrongBtn_damage = 25; 
     public static bool hurt = false;
+    public GameObject LosePanel;
 
     void Start()
     {
-        
+        LosePanel.SetActive(false);
     }
+
     void Update()
     {
         slider.value = health;
@@ -38,6 +40,17 @@ public class PlayerHP : MonoBehaviour
             health = health - wrongBtn_damage;
             ButtonSwitch.wrongBtn = false;
             hurt = true;
+        }
+
+        //Player died
+        if(health <= 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            Time.timeScale = 0f;
+
+            LosePanel.SetActive(true);
         }
     }
 
