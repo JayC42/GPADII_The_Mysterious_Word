@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +10,9 @@ public class LvlManager : MonoBehaviour
 
     public GameObject confirm;
     public Button[] buttons;
+
+    public AudioClip menuBGM;
+    public AudioClip buttonSelectSfx;   
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,8 @@ public class LvlManager : MonoBehaviour
         {
             buttons[i].interactable = true;
         }
+
+        AudioManager.instance.PlayMusic(menuBGM);
     }
 
 
@@ -61,4 +66,6 @@ public class LvlManager : MonoBehaviour
     {
         confirm.SetActive(false);
     }
+
+
 }

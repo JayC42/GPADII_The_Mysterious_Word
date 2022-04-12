@@ -15,14 +15,16 @@ public class ButtonSwitch : MonoBehaviour
     public Transform keySpawnLoc; 
     public static bool wrongBtn = false;
     private bool inRange; 
-    public AudioSource source;
-    public AudioClip[] sfx;
-    
+    private bool isCorrect; 
+    private bool canPress => inRange && Input.GetMouseButtonDown(0);
+
+    // Convert to use AudioManager
+    [SerializeField] private AudioClip[] sfx;
 
     void Start()
     {
-        source = GetComponent<AudioSource>();
         inRange = false; 
+        isCorrect = false; 
         ToolTip1.SetActive(false); 
         key.SetActive(false); 
 
@@ -30,10 +32,11 @@ public class ButtonSwitch : MonoBehaviour
 
     void Update()
     {
-        if (inRange && Input.GetMouseButtonDown(0))
+        if (canPress)
         {
             Debug.Log("Mouse click");
-            StartButtonPress();
+            if(!isCorrect)
+                StartButtonPress();
         }
         
     }
@@ -44,16 +47,24 @@ public class ButtonSwitch : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            inRange = true;
-            ToolTip1.SetActive(true); 
+            if(!isCorrect)
+            {
+                inRange = true;
+                ToolTip1.SetActive(true); 
+            }
+        
         }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            inRange = false;
-            ToolTip1.SetActive(false); 
+            if(!isCorrect)
+            {
+                inRange = false;
+                ToolTip1.SetActive(false); 
+            }
+             
         }
     }
     public void StartButtonPress()
@@ -70,14 +81,16 @@ public class ButtonSwitch : MonoBehaviour
     }
     IEnumerator ButtonPress()
     {
-        source.PlayOneShot(sfx[0]);
+        
+        AudioManager.instance.PlaySound(sfx[0]);
         pressSwitch.transform.localPosition = new Vector3(0, 0.7f, 0); 
         yield return new WaitForSeconds(2f); 
         pressSwitch.transform.localPosition = new Vector3(0, 1.5f, 0); 
 
         if (correctBtn == true)
         {
-            StartSpawnKey();    
+            StartSpawnKey();   
+            isCorrect = true; 
         }
         else 
         {
@@ -86,9 +99,9 @@ public class ButtonSwitch : MonoBehaviour
     }
     IEnumerator SpawnKey()
     {
-        source.PlayOneShot(sfx[4]); 
+        AudioManager.instance.PlaySound(sfx[4]); 
         yield return new WaitForSeconds(2f); 
-        source.PlayOneShot(sfx[1]); 
+        AudioManager.instance.PlaySound(sfx[1]); 
 
         // Key appears 
         key.SetActive(true); 
@@ -96,9 +109,9 @@ public class ButtonSwitch : MonoBehaviour
 
     IEnumerator SendDamage()
     {
-        source.PlayOneShot(sfx[2]); 
+        AudioManager.instance.PlaySound(sfx[2]); 
         yield return new WaitForSeconds(1f); 
-        source.PlayOneShot(sfx[3]); 
+        AudioManager.instance.PlaySound(sfx[3]); 
         wrongBtn = true;
     }
 }

@@ -10,7 +10,7 @@ public class SetVol : MonoBehaviour
 
     //Player
     public AudioSource hurt, jump;
-
+    public AudioClip Sfx; 
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +25,15 @@ public class SetVol : MonoBehaviour
             hurt.Play();
             PlayerHP.hurt = false;
         }
+        
+
 
         if (Movement.jumpSound == true)
         {
             jump.Play();
             Movement.jumpSound = false;
         }
+
 
         //if(OpenBook.openBook == false)
         //{
