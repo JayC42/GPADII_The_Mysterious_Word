@@ -28,7 +28,6 @@ public class LvlManager : MonoBehaviour
             buttons[i].interactable = true;
         }
 
-        AudioManager.instance.PlayMusic(menuBGM);
     }
 
 

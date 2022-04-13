@@ -8,10 +8,12 @@ public class PlayerHP : MonoBehaviour
     public float health;
     public Slider slider;
     public TMP_Text hpText; 
-    private int fall_damage = 5;
+    private int fall_damage = 10;
     private int wrongOrb_damage = 15;
     private int wrongBtn_damage = 25; 
     public static bool hurt = false;
+    //public AudioClip[] sfx;
+
 
     void Start()
     {
