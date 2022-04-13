@@ -7,9 +7,9 @@ using TMPro;
 public class TimerLvl3 : MonoBehaviour
 {
     public float timeValue;
-    public static TextMeshProUGUI timeText;
-    public static TextMeshProUGUI DisplayOnLvl3;
-    public static float Lvl3Score;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI DisplayOnLvl3;
+
 
     // Update is called once per frame
 
@@ -26,20 +26,7 @@ public class TimerLvl3 : MonoBehaviour
 
         if (TouchEndPoint.touchEndPoint)
         {
-            DisplayOnLvl3.text = timeText.text;
-
-            if (timeValue < 180)
-            {
-                Lvl3Score = timeValue * 100;
-            }
-            else if (timeValue >= 180 && timeValue < 300)
-            {
-                Lvl3Score = timeValue * 45;
-            }
-            else if (timeValue >= 300)
-            {
-                Lvl3Score = timeValue * 15;
-            }
+            DisplayOnLvl3.text = "Time taken: " + timeText.text;
         }
 
     }

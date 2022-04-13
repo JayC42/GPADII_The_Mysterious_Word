@@ -7,9 +7,8 @@ using TMPro;
 public class Countdown : MonoBehaviour
 {
     public float timeValue;
-    public static TextMeshProUGUI timeText;
-    public static TextMeshProUGUI DisplayOnLvl1;
-    public static float Lvl1Score; 
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI DisplayOnLvl1;
 
 
     // Update is called once per frame
@@ -27,20 +26,7 @@ public class Countdown : MonoBehaviour
 
         if(TouchEndPoint.touchEndPoint)
         {
-            DisplayOnLvl1.text = timeText.text;
-
-            if(timeValue < 90)
-            {
-                Lvl1Score = timeValue * 100;
-            }
-            else if(timeValue >= 90 && timeValue < 180)
-            {
-                Lvl1Score = timeValue * 45;
-            }
-            else if (timeValue >= 180)
-            {
-                Lvl1Score = timeValue * 15;
-            }
+            DisplayOnLvl1.text = "Time taken: " + timeText.text;
         }
 
     }
