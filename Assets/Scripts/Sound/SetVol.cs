@@ -9,33 +9,28 @@ public class SetVol : MonoBehaviour
     //public AudioSource BookOpen, BookClose;
 
     //Player
-    //public AudioSource hurt;
-    //public AudioSource jump;
-    public AudioClip[] sfx; 
-    
+    public AudioSource hurt, jump;
+    public AudioClip Sfx; 
+    // Start is called before the first frame update
+    void Start()
+    {
+      
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (PlayerHP.hurt == true)
         {
-            //hurt.Play();
-            AudioManager.instance.PlaySound(sfx[Random.Range(0, 2)]); 
-
+            hurt.Play();
             PlayerHP.hurt = false;
         }
         
-        if (Movement.walkSound == true)
-        {
-            //walk.Play();
-            AudioManager.instance.PlaySound(sfx[3]);
-            Movement.walkSound = false;
-        }
+
 
         if (Movement.jumpSound == true)
         {
-            //jump.Play();
-            AudioManager.instance.PlaySound(sfx[2]);
+            jump.Play();
             Movement.jumpSound = false;
         }
 

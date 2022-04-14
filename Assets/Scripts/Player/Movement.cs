@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
     public CharacterController controller;
     public Transform player; 
     bool isGrounded = false;
-    public static bool walkSound = false;
     public static bool jumpSound = false;
     //public LayerMask groundMask;
     //public Transform groundCheck;
@@ -57,16 +56,8 @@ public class Movement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * speed * Time.deltaTime);
-        
-
-        
-        if (Mathf.Abs(x) > 0 || Mathf.Abs(z) > 0)
-        {
-            // Play footsteps sfx
-            walkSound = true;
-            //AudioManager.instance.PlaySound(sfx[0]);
-        }
-        
+        // Play footsteps sfx
+        AudioManager.instance.PlaySound(sfx[0]);
 
     }
 
@@ -82,8 +73,8 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            jumpSound = true;
-            //AudioManager.instance.PlaySound(sfx[1]);
+            //jumpSound = true;
+            AudioManager.instance.PlaySound(sfx[1]);
         }
     }
 

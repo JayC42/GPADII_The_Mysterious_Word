@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     public AudioSource musicSource, sfxSource; 
-    
+    //public AudioSource [] audioSFX;
     private void Awake()
     {
         //if we dont have audio manager in scene then transfer the audio manager to next scene
@@ -27,10 +27,7 @@ public class AudioManager : MonoBehaviour
     }
     public void PlaySound(AudioClip clip)
     {
-        if (sfxSource.isPlaying == false)
-        {
-            sfxSource.PlayOneShot(clip); 
-        }
+        sfxSource.PlayOneShot(clip); 
     }
 
     public void MasterVolume(float value)
