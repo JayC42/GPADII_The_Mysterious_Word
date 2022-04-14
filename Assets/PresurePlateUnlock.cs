@@ -6,6 +6,7 @@ using UnityEngine;
 public class PresurePlateUnlock : MonoBehaviour
 {
     public GameObject lastDoor; 
+    public float timerCD = 20f;
     bool isStandingOnPlate; 
     bool isOpen; 
     void Start()
@@ -46,7 +47,7 @@ public class PresurePlateUnlock : MonoBehaviour
 
         // Play ticking time sfx 
         //udioManager.instance.PlaySFX(0);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(timerCD);
 
         //close door after time up
         isOpen = false; 
