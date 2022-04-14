@@ -24,6 +24,10 @@ public class LvlManager : MonoBehaviour
         {
             buttons[i].interactable = true;
         }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 
 

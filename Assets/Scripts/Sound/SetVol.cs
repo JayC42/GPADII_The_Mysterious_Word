@@ -9,6 +9,7 @@ public class SetVol : MonoBehaviour
     //public AudioSource BookOpen, BookClose;
 
     //Player
+<<<<<<< Updated upstream
     public AudioSource hurt, jump;
 
     // Start is called before the first frame update
@@ -16,19 +17,38 @@ public class SetVol : MonoBehaviour
     {
       
     }
+=======
+    //public AudioSource hurt;
+    //public AudioSource jump;
+    public AudioClip[] sfx; 
+    
+>>>>>>> Stashed changes
 
     // Update is called once per frame
     void Update()
     {
         if (PlayerHP.hurt == true)
         {
-            hurt.Play();
+            //hurt.Play();
+            AudioManager.instance.PlaySound(sfx[Random.Range(0, 2)]); 
+
             PlayerHP.hurt = false;
         }
+<<<<<<< Updated upstream
+=======
+        
+        if (Movement.walkSound == true)
+        {
+            //walk.Play();
+            AudioManager.instance.PlaySound(sfx[3]);
+            Movement.walkSound = false;
+        }
+>>>>>>> Stashed changes
 
         if (Movement.jumpSound == true)
         {
-            jump.Play();
+            //jump.Play();
+            AudioManager.instance.PlaySound(sfx[2]);
             Movement.jumpSound = false;
         }
 
