@@ -8,8 +8,8 @@ public class Countdown : MonoBehaviour
 {
     public float timeValue;
     public TextMeshProUGUI timeText;
-    public TextMeshProUGUI DisplayOnLvl1;
-
+    public TextMeshProUGUI DisplayMarkLvl1;
+    public static int Lvl1Score;
 
     // Update is called once per frame
 
@@ -25,8 +25,22 @@ public class Countdown : MonoBehaviour
         DisplayTime(timeValue);      
 
         if(TouchEndPoint.touchEndPoint)
-        {
-            DisplayOnLvl1.text = "Time taken: " + timeText.text;
+        {           
+
+            if(timeValue < 90)
+            {
+                Lvl1Score = (int)timeValue * 900;
+            }
+            else if(timeValue >= 90 && timeValue < 180)
+            {
+                Lvl1Score = (int)timeValue * 450;
+            }
+            else if (timeValue >= 180)
+            {
+                Lvl1Score = (int)timeValue * 150;
+            }
+
+            DisplayMarkLvl1.text = Lvl1Score.ToString();
         }
 
     }

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    public AudioSource musicSource, sfxSource; 
-    
+    public AudioSource musicSource, sfxSource;
+
     private void Awake()
     {
         //if we dont have audio manager in scene then transfer the audio manager to next scene
@@ -21,10 +23,13 @@ public class AudioManager : MonoBehaviour
         }
         
     }
+
+
     public void PlayMusic(AudioClip clip)
     {
-        musicSource.Play(); 
+        musicSource.Play();
     }
+
     public void PlaySound(AudioClip clip)
     {
         if (sfxSource.isPlaying == false)
@@ -35,7 +40,7 @@ public class AudioManager : MonoBehaviour
 
     public void MasterVolume(float value)
     {
-        AudioListener.volume = value; 
+        AudioListener.volume = value;
     }
 
     public void ToggleSFX()
@@ -45,6 +50,11 @@ public class AudioManager : MonoBehaviour
     public void ToggleMusic()
     {
         musicSource.mute = !musicSource.mute; 
+    }
+
+    public void GoHome()
+    {
+        SceneManager.LoadScene("Main-menu");
     }
 
 }
