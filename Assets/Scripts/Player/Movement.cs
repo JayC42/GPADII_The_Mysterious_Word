@@ -13,8 +13,6 @@ public class Movement : MonoBehaviour
     //public Transform groundCheck;
     //public float groundDistance = 0.4f;
     public float groundDist;
-    public AudioClip[] sfx; 
-
     Vector3 velocity;
 
     [Header("Values")]
@@ -58,16 +56,13 @@ public class Movement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
         
-
-        
-        if (Mathf.Abs(x) > 0 || Mathf.Abs(z) > 0)
+        if (isGrounded && Mathf.Abs(x) > 0 || isGrounded && Mathf.Abs(z) > 0)
         {
             // Play footsteps sfx
             walkSound = true;
             //AudioManager.instance.PlaySound(sfx[0]);
         }
-        
-
+ 
     }
 
     void Jump()
@@ -83,7 +78,6 @@ public class Movement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumpSound = true;
-            //AudioManager.instance.PlaySound(sfx[1]);
         }
     }
 

@@ -21,11 +21,21 @@ public class Menu_Game : MonoBehaviour
         {
             option.SetActive(true);
             openOption = true;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            Time.timeScale = 0f;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && openOption == true)
         {
             option.SetActive(false);
             openOption = false;
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            Time.timeScale = 1f;
         }
     }
 }
