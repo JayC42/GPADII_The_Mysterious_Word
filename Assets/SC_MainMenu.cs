@@ -36,6 +36,12 @@ public class SC_MainMenu : MonoBehaviour
         CreditsMenu.SetActive(true);
     }
 
+    public void CloseCreditMenu()
+    {
+        MainMenu.SetActive(true);
+        CreditsMenu.SetActive(false);
+    }
+
     public void MainMenuButton()
     {
         
