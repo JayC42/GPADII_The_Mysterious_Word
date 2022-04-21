@@ -245,6 +245,8 @@ MonoBehaviour:
   - {fileID: 1322513181}
   - {fileID: 728709753}
   - {fileID: 1865094689}
+  menuBGM: {fileID: 0}
+  buttonSelectSfx: {fileID: 0}
 --- !u!1 &52718749
 GameObject:
   m_ObjectHideFlags: 0

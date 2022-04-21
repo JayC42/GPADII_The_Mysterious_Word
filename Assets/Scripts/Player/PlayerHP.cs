@@ -14,6 +14,7 @@ public class PlayerHP : MonoBehaviour
     public static bool hurt = false;
     //public AudioClip[] sfx;
 
+    public GameObject Losepanel;
 
     void Start()
     {
@@ -40,6 +41,16 @@ public class PlayerHP : MonoBehaviour
             health = health - wrongBtn_damage;
             ButtonSwitch.wrongBtn = false;
             hurt = true;
+        }
+
+        if(health <= 0)
+        {
+            Losepanel.SetActive(true);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            Time.timeScale = 0f;
         }
     }
 
