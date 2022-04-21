@@ -10552,7 +10552,7 @@ Transform:
   - {fileID: 8919399739320593813}
   - {fileID: 348789675}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &258426647
 GameObject:
@@ -82854,7 +82854,7 @@ Transform:
   - {fileID: 525054287}
   - {fileID: 5389899}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1956166213
 GameObject:
@@ -91752,6 +91752,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orb_Red
       objectReference: {fileID: 0}
+    - target: {fileID: 289041270056243736, guid: f1aaab27b32d33446b69b7af05678045,
+        type: 3}
+      propertyPath: outlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 289041270056243742, guid: f1aaab27b32d33446b69b7af05678045,
         type: 3}
       propertyPath: container
@@ -91880,7 +91885,7 @@ PrefabInstance:
     - target: {fileID: 1671876905329860644, guid: f9b54760ed0d54d46870640c9770b5ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1671876905329860644, guid: f9b54760ed0d54d46870640c9770b5ec,
         type: 3}
@@ -91937,6 +91942,11 @@ PrefabInstance:
       propertyPath: container
       value: 
       objectReference: {fileID: 1973653010}
+    - target: {fileID: 1671876905329860647, guid: f9b54760ed0d54d46870640c9770b5ec,
+        type: 3}
+      propertyPath: outlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b54760ed0d54d46870640c9770b5ec, type: 3}
 --- !u!65 &1744902445633666109
@@ -92029,6 +92039,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orb_Green
       objectReference: {fileID: 0}
+    - target: {fileID: 2408304070141490344, guid: f70e200f9a17edb4ea2529d5ef207663,
+        type: 3}
+      propertyPath: outlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2408304070141490346, guid: f70e200f9a17edb4ea2529d5ef207663,
         type: 3}
       propertyPath: container
@@ -92037,7 +92052,7 @@ PrefabInstance:
     - target: {fileID: 2408304070141490349, guid: f70e200f9a17edb4ea2529d5ef207663,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2408304070141490349, guid: f70e200f9a17edb4ea2529d5ef207663,
         type: 3}
@@ -92598,7 +92613,7 @@ Transform:
   m_Children:
   - {fileID: 612263812}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &8896424088866299127
 MeshRenderer:
