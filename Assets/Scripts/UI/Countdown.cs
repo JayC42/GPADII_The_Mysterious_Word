@@ -27,19 +27,8 @@ public class Countdown : MonoBehaviour
         if(TouchEndPoint.touchEndPoint)
         {           
 
-            if(timeValue < 90)
-            {
-                Lvl1Score = (int)timeValue * 900;
-            }
-            else if(timeValue >= 90 && timeValue < 180)
-            {
-                Lvl1Score = (int)timeValue * 450;
-            }
-            else if (timeValue >= 180)
-            {
-                Lvl1Score = (int)timeValue * 150;
-            }
-
+            Lvl1Score = 1000000 / (int)timeValue;
+            
             DisplayMarkLvl1.text = Lvl1Score.ToString();
         }
 

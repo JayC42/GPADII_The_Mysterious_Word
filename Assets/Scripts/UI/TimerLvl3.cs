@@ -10,6 +10,7 @@ public class TimerLvl3 : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI DisplayMarkLvl3;
     public static int Lvl3Score;
+    private float sqrt;
 
     // Update is called once per frame
 
@@ -27,19 +28,8 @@ public class TimerLvl3 : MonoBehaviour
         if (TouchEndPoint.touchEndPoint)
         {
             
-            if (timeValue < 120)
-            {
-                Lvl3Score = (int)timeValue * 900;
-            }
-            else if (timeValue >= 120 && timeValue < 240)
-            {
-                Lvl3Score = (int)timeValue * 450;
-            }
-            else if (timeValue >= 240)
-            {
-                Lvl3Score = (int)timeValue * 150;
-            }
-
+            Lvl3Score = 1000000 / (int)timeValue;
+            
             DisplayMarkLvl3.text = Lvl3Score.ToString();
         }
 
