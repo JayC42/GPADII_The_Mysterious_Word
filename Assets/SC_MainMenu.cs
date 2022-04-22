@@ -6,6 +6,7 @@ public class SC_MainMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject CreditsMenu;
+    public GameObject OptionMenu;
     public AudioClip[] Sfx; 
 
     // Start is called before the first frame update
@@ -40,6 +41,18 @@ public class SC_MainMenu : MonoBehaviour
     {
         MainMenu.SetActive(true);
         CreditsMenu.SetActive(false);
+    }
+
+    public void OpenOptionMenu()
+    {
+        MainMenu.SetActive(false);
+        OptionMenu.SetActive(true);
+    }
+
+    public void CloseOptionMenu()
+    {
+        MainMenu.SetActive(true);
+        OptionMenu.SetActive(false);
     }
 
     public void MainMenuButton()
