@@ -197,8 +197,16 @@ MonoBehaviour:
 
     Credits:
 
+    Programmer
 
-'
+    UI
+    programer
+
+    Script designer
+
+    Level designer
+
+    Game tester'
 --- !u!222 &165856712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1038,6 +1046,8 @@ MonoBehaviour:
 
     Environment designer
 
+    Story Writer
+
 '
 --- !u!222 &1163858618
 CanvasRenderer:
@@ -1263,7 +1273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1717791252
 RectTransform:
   m_ObjectHideFlags: 0
