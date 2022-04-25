@@ -65,6 +65,12 @@ public class PlayerHP : MonoBehaviour
             health = health - fall_damage;
             hurt = true;
         }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            health = health - fall_damage;
+            hurt = true;
+        }
     }
 
 }
