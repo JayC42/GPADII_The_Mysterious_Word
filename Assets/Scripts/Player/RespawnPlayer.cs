@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class RespawnPlayer : MonoBehaviour
 {
-    public Transform player;
-    public Transform respawnPoint; 
-
+    [SerializeField] public Transform player;
+    [SerializeField] public Transform respawnPoint; 
+    
     void OnTriggerEnter(Collider other) 
     {
         // Also need to add condition to check if player is still alive!
-        if(other.gameObject.name == "Player")
+        if(other.CompareTag ("Player"))
         {
-            player.position = respawnPoint.position; 
-            Physics.SyncTransforms(); 
+            player.transform.position = respawnPoint.transform.position; 
+            Physics.SyncTransforms();
+            Debug.Log("Respawn");
         }
     }
 
